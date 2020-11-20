@@ -18,7 +18,7 @@ fi
 
 mkdir -p ${DATA_DIR}/${PROJECT_NAME}_${RAILS_ENV}
 mkdir -p ${DATA_DIR}/${PROJECT_NAME}_${RAILS_ENV}/mysql/data
-mkdir -p ${DATA_DIR}/${PROJECT_NAME}_${RAILS_ENV}/ch/logs
+mkdir -p ${DATA_DIR}/${PROJECT_NAME}_${RAILS_ENV}/clickhouse/logs
 mkdir -p ${DATA_DIR}/${PROJECT_NAME}_${RAILS_ENV}/rails/tmp
 mkdir -p ${DATA_DIR}/${PROJECT_NAME}_${RAILS_ENV}/rails/log
 mkdir -p ${DATA_DIR}/${PROJECT_NAME}_${RAILS_ENV}/rails/storage

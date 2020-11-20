@@ -24,9 +24,9 @@ services:
     image: yandex/clickhouse-server:20.3
     restart: always
     volumes:
-      - "${DATA_DIR}/${PROJECT_NAME}_${RAILS_ENV}/ch/data:/var/lib/clickhouse"
-      - "${DATA_DIR}/${PROJECT_NAME}_${RAILS_ENV}/ch/logs:/var/log/clickhouse-server"
-      - "./config/docker/${RAILS_ENV}/ch/config:/etc/clickhouse-server"
+      - "${DATA_DIR}/${PROJECT_NAME}_${RAILS_ENV}/clickhouse/data:/var/lib/clickhouse"
+      - "${DATA_DIR}/${PROJECT_NAME}_${RAILS_ENV}/clickhouse/logs:/var/log/clickhouse-server"
+      - "./config/docker/${RAILS_ENV}/clickhouse/config:/etc/clickhouse-server"
     ulimits:
       nofile:
         soft: 262144
