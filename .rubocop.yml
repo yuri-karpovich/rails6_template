@@ -1,0 +1,6 @@
+Style/AlignHash:
+  Enabled: false
+Metrics/LineLength:
+  Enabled: false
+StringHashKeys:
+  Enabled: false

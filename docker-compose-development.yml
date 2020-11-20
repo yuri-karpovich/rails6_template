@@ -1,0 +1,44 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:8
+    restart: always
+    cap_add:
+      - SYS_NICE
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    ports:
+      - ${EXPOSED_MYSQL_PORT}:3306
+    volumes:
+      - "${DATA_DIR}/${PROJECT_NAME}_${RAILS_ENV}/mysql/data:/var/lib/mysql"
+    networks:
+      - net
+
+  redis:
+    image: "redis:alpine"
+    ports:
+      - 6379:6379
+    networks:
+      - net
+
+  clickhouse:
+    image: yandex/clickhouse-server:20.3
+    restart: always
+    ports:
+      - 9000:9000
+      - 8123:8123
+    volumes:
+      - "${DATA_DIR}/${PROJECT_NAME}_${RAILS_ENV}/ch/data:/var/lib/clickhouse"
+      - "${DATA_DIR}/${PROJECT_NAME}_${RAILS_ENV}/ch/logs:/var/log/clickhouse-server"
+      - "./config/docker/${RAILS_ENV}/ch/config:/etc/clickhouse-server"
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144
+    networks:
+      - net
+
+networks:
+  net:

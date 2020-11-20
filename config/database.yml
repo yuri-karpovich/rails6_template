@@ -1,0 +1,29 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  database: <%= ENV.fetch("PROJECT_NAME") %>_<%= ENV.fetch("RAILS_ENV") %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 60 } %>
+  reconnect: true
+  username: root
+  password: <%= ENV.fetch("MYSQL_ROOT_PASSWORD") %>
+  variables:
+    sql_mode: TRADITIONAL
+
+production:
+  <<: *default
+  port: 3306
+  host: mysql
+
+development:
+  <<: *default
+  port: <%= ENV.fetch("EXPOSED_MYSQL_PORT") %>
+  host: 127.0.0.1
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  database: <%= ENV.fetch("PROJECT_NAME") %>_test
+  port: <%= ENV.fetch("EXPOSED_MYSQL_PORT") %>
+  host: 127.0.0.1

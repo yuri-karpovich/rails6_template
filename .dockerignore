@@ -1,0 +1,37 @@
+.git
+.gitignore
+README.md
+
+#
+# OS X
+#
+.DS_Store
+.AppleDouble
+.LSOverride
+# Thumbnails
+._*
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+#
+# Rails
+#
+*.rbc
+capybara-*.html
+log
+tmp
+db/*.sqlite3
+db/*.sqlite3-journal
+public/system
+coverage/
+spec/tmp
+**.orig
+
+.bundle
+
+.ruby-gemset
+
+.rvmrc
+
+node_modules
